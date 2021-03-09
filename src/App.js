@@ -7,7 +7,7 @@ import 'antd/dist/antd.css';
 
 function App() {
   return (
-    <div>
+    <div style={{ width: "100%", height: "100%" }}>
       <BrowserRouter>
         <Switch>
           {renderRoutes(routes)}

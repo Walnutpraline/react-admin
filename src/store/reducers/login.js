@@ -1,14 +1,11 @@
 import {
-    ADD_NUMBER,
-    SUB_NUMBER
+    Authed
 } from '../action-types';
 
-export function loginReducer(state = { counter: 0 }, action) {
+export function loginReducer(state = { authed: false }, action) {
     switch (action.type) {
-        case ADD_NUMBER:
-            return { ...state, counter: state.counter + action.num };
-        case SUB_NUMBER:
-            return { ...state, counter: state.counter - action.num };
+        case Authed:
+            return { ...state, authed: true };
         default:
             return state;
     }

@@ -1,5 +1,4 @@
-import { addAction, subAction } from './login';
+import { authedLogin } from './login';
 export {
-    addAction,
-    subAction
+    authedLogin
 }
