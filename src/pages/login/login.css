@@ -7,6 +7,7 @@
   background: url(../../images/back.png);
   background-size: 100%;
 }
+
 .login-form {
   width: 800px;
   height: 500px;
@@ -15,7 +16,8 @@
   display: flex;
   align-items: center;
 }
-.form-image{
+
+.form-image {
   margin-left: 40px;
   margin-right: 40px;
   border-radius: 10px;

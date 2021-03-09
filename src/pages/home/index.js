@@ -25,7 +25,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div style={{ width: 256 }}>
+            <div style={{ width: "256px", height: "100%" }} className="Menu">
                 <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
                     {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
                 </Button>
@@ -35,16 +35,17 @@ class Home extends React.Component {
                     mode="inline"
                     theme="light"
                     inlineCollapsed={this.state.collapsed}
+                    style={{ height: "100%" }}
                 >
                     <Menu.Item key="1" icon={<PieChartOutlined />}>
                         Option 1
-          </Menu.Item>
+                    </Menu.Item>
                     <Menu.Item key="2" icon={<DesktopOutlined />}>
                         Option 2
-          </Menu.Item>
+                    </Menu.Item>
                     <Menu.Item key="3" icon={<ContainerOutlined />}>
                         Option 3
-          </Menu.Item>
+                    </Menu.Item>
                     <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
                         <Menu.Item key="5">Option 5</Menu.Item>
                         <Menu.Item key="6">Option 6</Menu.Item>

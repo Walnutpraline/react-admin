@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './login.css';
 import { connect } from 'react-redux';
 import { authedLogin } from "../../store/actions";
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import workLogin from "../../images/work_login.png";
 
 const layout = {
@@ -21,7 +22,6 @@ class Login extends Component {
                 this.props.history.push('/')
             }
         };
-
         const onFinishFailed = (errorInfo) => {
             console.log('Failed:', errorInfo);
         };
@@ -29,7 +29,7 @@ class Login extends Component {
             <div className="login">
                 <div className="login-form">
                     <div className="form-image">
-                        <img src={workLogin} style={{width:"300px",height:"225px"}} />
+                        <img src={workLogin} style={{ width: "400px", height: "300px" }} />
                     </div>
                     <div>
                         <Form
@@ -39,27 +39,29 @@ class Login extends Component {
                             onFinish={onFinish}
                             onFinishFailed={onFinishFailed}
                         >
+                            <Form.Item >
+                                <h2>跨境电商管理系统</h2>
+                            </Form.Item>
                             <Form.Item
-                                label="账号"
                                 name="username"
                                 rules={[{ required: true, message: '请输入账号!' }]}
                             >
-                                <Input />
+                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="账号" />
                             </Form.Item>
                             <Form.Item
-                                label="密码"
                                 name="password"
                                 rules={[{ required: true, message: '请输入密码!' }]}
                             >
-                                <Input.Password />
-                            </Form.Item>
-                            <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-                                <Checkbox>记住账号</Checkbox>
+                                <Input
+                                    prefix={<LockOutlined className="site-form-item-icon" />}
+                                    type="password"
+                                    placeholder="密码"
+                                />
                             </Form.Item>
                             <Form.Item {...tailLayout}>
                                 <Button type="primary" htmlType="submit">
                                     登录
-                        </Button>
+                                </Button>
                             </Form.Item>
                         </Form>
                     </div>
