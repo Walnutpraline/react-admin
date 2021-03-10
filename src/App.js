@@ -1,19 +1,17 @@
 import React from 'react';
 import './common/style/frame.css';
-import renderRoutes from './utils/renderRoutes';
-import routes from './router/index';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import Router from './router/index';
 import 'antd/dist/antd.css';
+import { Provider } from 'react-redux';
+import store from "./store";
 
 function App() {
   return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <BrowserRouter>
-        <Switch>
-          {renderRoutes(routes)}
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <React.StrictMode>
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    </React.StrictMode>
   );
 }
 
