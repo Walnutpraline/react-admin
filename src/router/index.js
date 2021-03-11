@@ -10,6 +10,7 @@ import { //引入路由相关配置
 } from 'react-router-dom';
 export default class Router extends Component {
     render() {
+        console.log("Router")
         return (
             <BrowserRouter>
                 <Switch>
