@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom'
 import MenuArr from "../config/MenuArr";
+import "./Sider.less"
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -37,8 +38,9 @@ class LayoutSider extends React.Component {
     }
     render() {
         return (
-            <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+            <Sider trigger={null} collapsible collapsed={this.state.collapsed} width="180px">
+                <div className="logo">logo</div>
+                <Menu theme="inline" mode="inline" defaultSelectedKeys={['1']}>
                     {
                         this.renderMenu(MenuArr)
                     }

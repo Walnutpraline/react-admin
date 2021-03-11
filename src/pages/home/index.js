@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
-import "./home.css";
+import "./home.less";
 import Sider from "./Sider";
 import Distribution from "./Layout";
 class Home extends React.Component {
