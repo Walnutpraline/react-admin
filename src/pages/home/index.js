@@ -6,7 +6,7 @@ import Distribution from "./Layout";
 class Home extends React.Component {
     render() {
         return (
-            <Layout style={{height:"100%"}}>
+            <Layout style={{ height: "100%" }}>
                 <Sider />
                 <Distribution />
             </Layout>

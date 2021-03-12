@@ -32,18 +32,4 @@ class LayoutContent extends React.Component {
 
     }
 }
-function Homew() {
-    return (
-        <div>
-            <h3>Homew</h3>
-        </div>
-    )
-}
-function Work() {
-    return (
-        <div>
-            <h3>Work</h3>
-        </div>
-    )
-}
 export default LayoutContent

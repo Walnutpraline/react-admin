@@ -7,6 +7,12 @@ const MenuArr = [
         title: "首页",
         path: "/statistics",
         icon: PicLeftOutlined,
+        permission: 1,
+    },
+    {
+        title: "热卖商品",
+        path: "/hotgoods",
+        icon: PicLeftOutlined,
         permission: 1
     },
     {

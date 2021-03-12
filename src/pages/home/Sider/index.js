@@ -1,14 +1,47 @@
 import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Button } from 'antd';
 import { Link } from 'react-router-dom'
 import MenuArr from "../config/MenuArr";
-import "./Sider.less"
+import "./Sider.less";
+import { connect } from 'react-redux';
+import { foldCollapsed } from "@/store/actions/index";
+
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 class LayoutSider extends React.Component {
-    state = {
-        collapsed: false,
+    constructor(props) {
+        super(props)
+        this.state = {
+            collapsed: true,
+            pathname: "",
+            openKeys: ""
+        };
+    }
+    componentWillMount() {
+        //获取当前路由地址
+        let pathname = window.location.pathname;
+        let openKey = "/" + pathname.split("/")[1];
+        this.setState({
+            pathname: pathname,
+            openKeys: openKey
+        })
+    }
+    handleChangePage({ keyPath }) {
+        this.setState({
+            pathname: keyPath[0],
+        })
+    }
+    onOpenChange = openKeys => {
+        let keysLen = openKeys.length;
+        if (keysLen > 1) {
+            var trueOpen = openKeys.filter(item => {
+                return openKeys[keysLen - 1].includes(item)
+            })
+            this.setState({ openKeys: trueOpen })
+        } else {
+            this.setState({ openKeys: openKeys })
+        }
     };
     renderMenu = (menus) => {
         let roleType = 4;
@@ -36,11 +69,22 @@ class LayoutSider extends React.Component {
             }
         })
     }
+    toggleCollapsed = () => {
+        this.props.foldCollapsed(!this.props.collapsed)
+    };
     render() {
         return (
-            <Sider trigger={null} collapsible collapsed={this.state.collapsed} width="180px">
-                <div className="logo">logo</div>
-                <Menu theme="inline" mode="inline" defaultSelectedKeys={['1']}>
+            <Sider trigger={null} collapsible collapsed={this.props.collapsed} width="256px">
+                <Menu
+                    mode="inline"
+                    theme="dark"
+                    defaultSelectedKeys={['/statistics']}
+                    selectedKeys={[this.state.pathname]}
+                    defaultOpenKeys={[this.state.openKeys]}
+                    onClick={this.handleChangePage.bind(this)}
+                    onOpenChange={this.onOpenChange}
+                    inlineCollapsed={this.props.collapsed}
+                >
                     {
                         this.renderMenu(MenuArr)
                     }
@@ -49,4 +93,9 @@ class LayoutSider extends React.Component {
         )
     }
 }
-export default LayoutSider
+const mapStateToProps = (state) => {
+    return {
+        collapsed: state.FoldCollapsed.collapsed
+    }
+}
+export default connect(mapStateToProps, { foldCollapsed })(LayoutSider);

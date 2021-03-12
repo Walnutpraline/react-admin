@@ -4,6 +4,9 @@ import {
     MenuUnfoldOutlined,
     MenuFoldOutlined
 } from '@ant-design/icons';
+import { connect } from 'react-redux';
+import { foldCollapsed } from "@/store/actions/index";
+
 const { Header } = Layout;
 
 class LayoutHeader extends React.Component {
@@ -11,14 +14,12 @@ class LayoutHeader extends React.Component {
         collapsed: false,
     };
     toggle = () => {
-        this.setState({
-            collapsed: !this.state.collapsed,
-        });
+        this.props.foldCollapsed(!this.props.collapsed);
     };
     render() {
         return (
             <Header className="site-layout-background" style={{ padding: 0 }}>
-                {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                {React.createElement(this.props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                     className: 'trigger',
                     onClick: this.toggle,
                 })}
@@ -26,4 +27,9 @@ class LayoutHeader extends React.Component {
         )
     }
 }
-export default LayoutHeader
+const mapStateToProps = (state) => {
+    return {
+        collapsed: state.FoldCollapsed.collapsed
+    }
+}
+export default connect(mapStateToProps, { foldCollapsed })(LayoutHeader);
