@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { authedLogin } from "../../store/actions";
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import workLogin from "../../images/work_login.png";
+import workLogin from "@/images/work_login.png";
 
 const layout = {
     labelCol: { span: 8 },

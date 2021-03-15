@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom'
 import MenuArr from "../config/MenuArr";
 import "./Sider.less";
 import { connect } from 'react-redux';
-import { foldCollapsed } from "@/store/actions/index";
-
+import headerImg from "@/images/logo.png";
+import { PoweroffOutlined } from '@ant-design/icons';
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -75,6 +75,9 @@ class LayoutSider extends React.Component {
     render() {
         return (
             <Sider trigger={null} collapsible collapsed={this.props.collapsed} width="256px">
+                <div className="header_img">
+                    <img src={headerImg} style={{ width: "100%", height: "100%" }} />
+                </div>
                 <Menu
                     mode="inline"
                     theme="dark"
@@ -88,8 +91,11 @@ class LayoutSider extends React.Component {
                     {
                         this.renderMenu(MenuArr)
                     }
+                    <Menu.Item key="/quit" icon={<PoweroffOutlined />} style={{ position:"absolute",bottom:"10%" }}>
+                        退出
+                    </Menu.Item>
                 </Menu>
-            </Sider>
+            </Sider >
         )
     }
 }
@@ -98,4 +104,4 @@ const mapStateToProps = (state) => {
         collapsed: state.FoldCollapsed.collapsed
     }
 }
-export default connect(mapStateToProps, { foldCollapsed })(LayoutSider);
+export default connect(mapStateToProps)(LayoutSider);
