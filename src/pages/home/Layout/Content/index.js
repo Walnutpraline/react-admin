@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import RouteMap from "../../config/RouteMap";
+import "./content.less";
 const { Content } = Layout;
 
 class LayoutContent extends React.Component {
     RouteArr(route) {
         return route.map(route => {
-
             return (<Route path={route.path} component={route.component} exact={route.exact} key={route.path} />)
         })
     }
