@@ -106,74 +106,80 @@ class Statistics extends React.Component {
         );
         const columns = [
             {
-                title: 'Name',
-                dataIndex: 'name',
-                key: 'name',
+                title: '产品名',
+                dataIndex: 'goodsName',
+                key: 'goodsName',
                 render: text => <a>{text}</a>,
             },
             {
-                title: 'Age',
-                dataIndex: 'age',
-                key: 'age',
+                title: '位置',
+                dataIndex: 'position',
+                key: 'position',
             },
             {
-                title: 'Address',
-                dataIndex: 'address',
-                key: 'address',
+                title: '时间-日期',
+                dataIndex: 'timeDate',
+                key: 'timeDate',
             },
             {
-                title: 'Tags',
-                key: 'tags',
-                dataIndex: 'tags',
-                render: tags => (
-                    <>
-                        {tags.map(tag => {
-                            let color = tag.length > 5 ? 'geekblue' : 'green';
-                            if (tag === 'loser') {
-                                color = 'volcano';
-                            }
-                            return (
-                                <Tag color={color} key={tag}>
-                                    {tag.toUpperCase()}
-                                </Tag>
-                            );
-                        })}
-                    </>
-                ),
+                title: '数量',
+                dataIndex: 'quantity',
+                key: 'quantity',
             },
             {
-                title: 'Action',
-                key: 'action',
-                render: (text, record) => (
-                    <Space size="middle">
-                        <a>Invite {record.name}</a>
-                        <a>Delete</a>
-                    </Space>
-                ),
+                title: '总额',
+                dataIndex: 'total',
+                key: 'total',
             },
+            {
+                title: '状态',
+                key: 'status',
+                dataIndex: 'status',
+                render: tags => {
+                    if (tags === "1") {
+                        return (
+                            <Tag color="#4ad991">
+                                已支付
+                            </Tag>
+                        );
+                    } else {
+                        return (
+                            <Tag color="#ea0234">
+                                未支付
+                            </Tag>
+                        );
+                    }
+                }
+            }
         ];
 
         const data = [
             {
                 key: '1',
-                name: 'John Brown',
-                age: 32,
-                address: 'New York No. 1 Lake Park',
-                tags: ['nice', 'developer'],
+                goodsName: 'iphone12',
+                position: "成都",
+                timeDate: '03.10.20-12:53 PM',
+                quantity: "432",
+                total: "2560",
+                status: "1"
             },
             {
                 key: '2',
-                name: 'Jim Green',
-                age: 42,
-                address: 'London No. 1 Lake Park',
-                tags: ['loser'],
+                goodsName: 'iphone12 mini',
+                position: "天津",
+                timeDate: '03.10.20-12:53 PM',
+                quantity: "432",
+                total: "2560",
+                status: "1"
             },
             {
                 key: '3',
-                name: 'Joe Black',
-                age: 32,
-                address: 'Sidney No. 1 Lake Park',
-                tags: ['cool', 'teacher'],
+                goodsName: 'iphone12 pro',
+                position: "新津",
+                timeDate: '03.10.20-12:53 PM',
+                quantity: "432",
+                total: "2560",
+                status: "0"
             },
         ];
         return (
