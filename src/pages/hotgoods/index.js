@@ -1,12 +1,11 @@
-// import React, { Component } from 'react';
+import React, { Component } from 'react';
 import { useState, useEffect } from "react";
-
-// import { useState, useEffect } from 'react';
 // class HotGoods extends React.Component {
 //     constructor() {
 //         super();
 //         this.state = {
-//             count: { a: 1 }
+//             count: { a: 1 },
+//             num: 0
 //         }
 //     }
 //     add = () => {
@@ -24,14 +23,26 @@ import { useState, useEffect } from "react";
 // }
 function HotGoods() {
     const [count, setCount] = useState({ a: 0 });
+    const [num, setNum] = useState(0);
+    useEffect(() => {
+        // setNum(num + 1)
+        console.log(num)
+    })
     function add() {
-        console.log(count, "count")
         setCount({ a: count.a + 1 })
+    }
+    function addNum() {
+        setNum(num + 1)
     }
     return (
         <div>
             Count: {count.a}
+            <br />
             <button onClick={add}>+</button>
+            <br />
+            Count: {num}
+            <br />
+            <button onClick={addNum}>+</button>
         </div>
     );
 }
