@@ -25,7 +25,8 @@ function HotGoods() {
     const [count, setCount] = useState({ a: 0 });
     const [num, setNum] = useState(0);
     useEffect(() => {
-        // setNum(num + 1)
+        setNum(num + 1)
+        console.log("合并修改")
         console.log(num)
     })
     function add() {
